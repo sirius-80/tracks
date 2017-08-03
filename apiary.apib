@@ -1,0 +1,99 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# tracks
+
+Tracks is a simple API providing access to a track database.
+
+## Tracks Collection [/tracks]
+
+### List All Tracks [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "tracks": [
+                    {
+                        "id": 1,
+                        "timestamp": "2015-08-05T08:40:51.620Z",
+                        "position": {
+                            "latitude": 0.123,
+                            "longitude": 1.234,
+                            "altitude": 1234
+                        },
+                        "velocity": {
+                            "course": 0.123,
+                            "vx": 123,
+                            "vy": 234,
+                            "vz": -3
+                        }
+                    }, {
+                        "id": 2,
+                        "timestamp": "2015-08-05T08:40:51.620Z",
+                        "position": {
+                            "latitude": 1.543,
+                            "longitude": 3.234,
+                            "altitude": 442
+                        },
+                        "velocity": {
+                            "course": 1.412,
+                            "vx": -52,
+                            "vy": 31,
+                            "vz": 35
+                        }
+                    }
+                ]
+            }
+        ]
+
+### Create a New Track [POST]
+
+You may create a new track using this action. It takes a JSON
+object containing the track data.
+
++ Request (application/json)
+
+        {
+            "track": {
+                "timestamp": "2015-08-05T08:40:51.620Z",
+                "position": {
+                    "latitude": 0.123,
+                    "longitude": 1.234,
+                    "altitude": 1234
+                },
+                "velocity": {
+                    "course": 0.123,
+                    "vx": 123,
+                    "vy": 234,
+                    "vz": -3
+                }
+            }
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /tracks/3
+
+    + Body
+
+            {
+                "track": {
+                    "id": 3,
+                    "timestamp": "2015-08-05T08:40:51.620Z",
+                    "position": {
+                        "latitude": 0.123,
+                        "longitude": 1.234,
+                        "altitude": 1234
+                    },
+                    "velocity": {
+                        "course": 0.123,
+                        "vx": 123,
+                        "vy": 234,
+                        "vz": -3
+                    }
+                }
+            }
